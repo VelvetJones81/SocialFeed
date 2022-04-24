@@ -1,23 +1,28 @@
 
 
 const DisplayPosts = (props) => {
-    return (  
-        <div className = "page">
+    return (
         <div>
-          <header>
-            <h1>Social<small className='text-muted'></small></h1>
-          </header>
+          {props.parentPosts.map((post, index) => {
+            return (
+              <ul key={index} className="border-box">
+                <div>
+                  <li>{post.date}</li>
+                  <li>
+                    <h3>{post.name}</h3>
+                  </li>
+                  <li>{post.comment}</li>
+                  <Buttons />
+                </div>
+              </ul>
+            );
+          })}
         </div>
-        <div>
-          <CreatePost addPost={addPost} />
-        </div>
-        <div>
-          <DisplayPosts postEntries={post} />
-        </div>
-          
-      
-      </div>
-    );
-}
+      );
+    };
+
+
+
+    
  
 export default DisplayPosts;
