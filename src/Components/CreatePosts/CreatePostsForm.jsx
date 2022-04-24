@@ -3,16 +3,36 @@ import React, { useState } from 'react';
 
 const CreatePostsForm = (props) => {
 
-    const [date, setDate] = useState(0)
-    const [name, setName] = ("")
-    const [comment, setComment] = useState("")
+    const [date] = useState(new Date().toLocaleDateString());
+    const [name, setName] = useState("");
+    const [comment, setComment] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        let newEntry = {
+            date: date,
+            name: name,
+            comment: comment,
+        }
+        props.CreatePostsFormProperty(newEntry)
+    }
+
 
     return ( 
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>Name</label>
-            <input type= 'text' className='form-contol' value={name} onChange={(event) => setName(event.target.value)} />
+            <textarea
+            input type= 'text'  
+            value={name} onChange={(event) => setName(event.target.value)} 
+            />
+
             <label>Post</label>
-            <input type= 'text' className='form-control' value={comment} onChange={(event) => setComment(event.target.value)} />
+            <textarea
+            input type= 'text'  
+            value={comment} onChange={(event) => setComment(event.target.value)} 
+            />
+
+            <button type='submit'>Add</button>
                
         </form>
      );

@@ -3,20 +3,22 @@
 const DisplayPosts = (props) => {
     return (
         <div>
-          {props.parentPosts.map((post, index) => {
-            return (
-              <ul key={index} className="border-box">
+        <table>
+          {props.parentPosts.map((posts, index) => {
+              return (
+                  <ul key={index} className="border-box">
                 <div>
-                  <li>{post.date}</li>
+                  <li>{posts.date}</li>
                   <li>
-                    <h3>{post.name}</h3>
+                    <h3>{posts.name}</h3>
                   </li>
-                  <li>{post.comment}</li>
-                  <Buttons />
+                  <li>{posts.comment}</li>
+                  {/* <Buttons /> */}
                 </div>
               </ul>
             );
-          })}
+        })}
+        </table>
         </div>
       );
     };
